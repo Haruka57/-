@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入社</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        section {
+            padding: 2rem;
+        }
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .product button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background: #0056b3;
+        }
+        .cart {
+            margin-top: 2rem;
+            border-top: 2px solid #ccc;
+            padding-top: 1rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+        }
+        .cart button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart button:hover {
+            background: #218838;
+        }
+        .user-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .user-info label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .user-info input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>喜欢您来~欢迎您来~</h1>
+    </header>
+    <section>
+        <h2>社费10r，任选一个吧唧</h2>
+        <div id="product-list">
+            <!-- 商品列表 -->
+            <div class="product">
+                <span>吧唧1</span>
+                <span>价格：10r</span>
+                <button onclick="addToCart('吧唧1', 10)">购买</button>
+            </div>
+            <div class="product">
+                <span>吧唧2</span>
+                <span>价格：10r</span>
+                <button onclick="addToCart('吧唧2', 10)">购买</button>
+            </div>
+        </div>
+
+        <div class="cart" id="cart">
+            <h2>购物车</h2>
+            <div id="cart-items">
+                <!-- 购物车商品 -->
+            </div>
+            <p class="cart-total" id="cart-total">总价：¥0</p>
+            <button onclick="showUserInfoForm()">去支付</button>
+        </div>
+
+        <div class="user-info" id="user-info" style="display: none;">
+            <h2>填写个人信息</h2>
+            <label>
+                <input type="radio" name="purchase-type" value="school" onclick="toggleUserInfoForm('school')" checked>
+                在校购买
+            </label>
+            <label>
+                <input type="radio" name="purchase-type" value="delivery" onclick="toggleUserInfoForm('delivery')">
+                邮寄购买
+            </label>
+
+            <div id="school-info" style="display: block;">
+                <label for="cn">CN</label>
+                <input type="text" id="cn" placeholder="请输入您的CN">
+                <label for="qq">QQ</label>
+                <input type="text" id="qq" placeholder="请输入您的QQ号">
+            </div>
+
+            <div id="delivery-info" style="display: none;">
+                <label for="name">姓名</label>
+                <input type="text" id="name" placeholder="请输入您的姓名">
+                <label for="phone">联系方式</label>
+                <input type="text" id="phone" placeholder="请输入您的联系方式">
+                <label for="address">地址</label>
+                <input type="text" id="address" placeholder="请输入您的邮寄地址">
+            </div>
+
+            <button onclick="proceedToPayment()">确认支付</button>
+        </div>
+    </section>
+    <footer>
+        <p style="text-align: center; font-style: italic;">&copy; 2025 意识流动漫社. 保留所有权利。</p>
+    </footer>
+    <script>
+        // 定义购物车
+        const cart = [];
+
+        // 添加商品到购物车
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        // 更新购物车显示
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            cartItems.innerHTML = ''; // 清空购物车内容
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>¥${item.price}</span>
+                    <button onclick="removeFromCart(${index})">移除</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = `总价：¥${total}`;
+        }
+
+        // 从购物车移除商品
+        function removeFromCart(index) {
+            cart.splice(index, 1); // 移除指定商品
+            updateCart();
+        }
+
+        // 显示用户信息表单
+        function showUserInfoForm() {
+            document.getElementById('user-info').style.display = 'block';
+        }
+
+        // 切换用户信息表单
+        function toggleUserInfoForm(type) {
+            if (type === 'school') {
+                document.getElementById('school-info').style.display = 'block';
+                document.getElementById('delivery-info').style.display = 'none';
+            } else {
+                document.getElementById('school-info').style.display = 'none';
+                document.getElementById('delivery-info').style.display = 'block';
+            }
+        }
+
+        // 跳转到支付页面
+        function proceedToPayment() {
+            const purchaseType = document.querySelector('input[name="purchase-type"]:checked').value;
+            let userInfo = {};
+            let isValid = true; // 用于验证信息是否完整
+
+            if (purchaseType === 'school') {
+                const cn = document.getElementById('cn').value.trim();
+                const qq = document.getElementById('qq').value.trim();
+
+                if (!cn || !qq) {
+                    isValid = false;
+                    alert('请完整填写在校购买信息（CN 和 QQ）！');
+                } else {
+                    userInfo = {
+                        type: 'school',
+                        cn: cn,
+                        qq: qq
+                    };
+                }
+            } else if (purchaseType === 'delivery') {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const address = document.getElementById('address').value.trim();
+
+                if (!name || !phone || !address) {
+                    isValid = false;
+                    alert('请完整填写邮寄购买信息（姓名、联系方式和地址）！');
+                } else {
+                    userInfo = {
+                        type: 'delivery',
+                        name: name,
+                        phone: phone,
+                        address: address
+                    };
+                }
+            }
+
+            // 如果信息完整，存储数据并跳转到支付页面
+            if (isValid) {
+                localStorage.setItem('cart', JSON.stringify(cart)); // 存储购物车数据
+                localStorage.setItem('userInfo', JSON.stringify(userInfo)); // 存储用户信息
+                window.location.href = 'payment.html'; // 跳转到支付页面
+            }
+        }
+    </script>
+</body>
+</html>

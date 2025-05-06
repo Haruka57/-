@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图集</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            background: #7cb8f8;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        nav table {
+            width: auto;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        nav td {
+            padding: 1rem 2rem;
+        }
+        nav td a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        nav td a:hover {
+            color: #FFD700;
+        }
+        .gallery {
+            display: none; /* 默认隐藏 */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery.active {
+            display: grid; /* 显示当前内容 */
+        }
+        .gallery-item {
+            width: 100%;
+            height: 250px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body onload="showGallery('photo')"> <!-- 页面加载时显示第一个标签内容 -->
+    <header>
+        <h1>图集</h1>
+    </header>
+    <nav>
+        <table>
+            <tr>
+                <td><a onclick="showGallery('photo')">合照</a></td>
+                <td><a onclick="showGallery('cos')">cos</a></td>
+                <td><a onclick="showGallery('drama')">剧照</a></td>
+                <td><a onclick="showGallery('drawing')">绘画</a></td>
+                <td><a onclick="showGallery('emoji')">表情包</a></td>
+            </tr>
+        </table>
+    </nav>
+    <div id="photo" class="gallery">
+        <div class="gallery-item">
+            <img src="5.2海馆合照（摄影：花间怜）.jpg" alt="5.2合照1">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                摄影：花间怜
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="5.2海馆合照（摄影：贰意）.jpg" alt="合照2">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                摄影：贰意
+            </div>
+        </div>
+    </div>
+    <div id="cos" class="gallery">
+        <div class="gallery-item">
+            <img src="红鲤儿1.jpg" alt="cos 照片 1">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                红鲤儿1
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="红鲤儿2.jpg" alt="cos 照片 2">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                红鲤儿2
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="红鲤儿3.jpg" alt="cos 照片 3">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                红鲤儿3
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="红鲤儿4.jpg" alt="cos 照片 4">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                红鲤儿4
+            </div>
+        </div>
+    </div>
+    <div id="drama" class="gallery">
+        <div class="gallery-item">
+            <img src="5.2海馆合照（摄影：花间怜）.jpg" alt="合照1">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                摄影：花间怜
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="5.2海馆合照（摄影：贰意）.jpg" alt="合照2">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                摄影：贰意
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="pica赛后总结.jpg" alt="pica喵">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                pica喵
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="帅谢林帅pica.jpg" alt="帅谢林帅pica">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                帅谢林帅pica
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="台下三人组.jpg" alt="观众照">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                帅汝收
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="这是互帮互助.jpg" alt="观众照">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                这是互帮互助
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="鸡哥：哼.jpg" alt="剧照">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                鸡哥：哼
+            </div>
+        </div>
+        <!-- 插入链接区域 -->
+        <div class="gallery-item">
+            <div style="text-align: center; padding: 1rem; background: #f9f9f9; border-radius: 10px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <p style="margin: 0 0 1rem; font-size: 1rem; color: #333; font-weight: bold;">
+                    还想看？自己去百度网盘！
+                </p>
+                <p style="margin: 0 0 0.5rem; font-size: 0.9rem; color: #007BFF;">
+                    chen拍的: 
+                    <a href="https://pan.baidu.com/s/1gNohH_l9U7knqwf1Qib4VQ" target="_blank" style="color: #007BFF; text-decoration: none;">
+                        https://pan.baidu.com/s/1gNohH_l9U7knqwf1Qib4VQ
+                    </a> 
+                    提取码: <strong>a69x</strong>
+                </p>
+                <p style="margin: 0 0 0.5rem; font-size: 0.9rem; color: #007BFF;">
+                    官摄1 大合影: 
+                    <a href="https://pan.baidu.com/s/1MxXc0QrcJDSheaF68k_2LQ?pwd=8888" target="_blank" style="color: #007BFF; text-decoration: none;">
+                        https://pan.baidu.com/s/1MxXc0QrcJDSheaF68k_2LQ
+                    </a> 
+                    提取码: <strong>8888</strong>
+                </p>
+                <p style="margin: 0; font-size: 0.9rem; color: #007BFF;">
+                    官摄2 八二 剧照: 
+                    <a href="https://pan.baidu.com/s/1_INaL3GhPlosmw4RUl0kug" target="_blank" style="color: #007BFF; text-decoration: none;">
+                        https://pan.baidu.com/s/1_INaL3GhPlosmw4RUl0kug
+                    </a> 
+                    提取码: <strong>wycj</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="drawing" class="gallery">
+        <div class="gallery-item">
+            <img src="阿郁1.jpg" alt="阿郁1">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁1
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁2.jpg" alt="阿郁2">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁2
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁3.png" alt="阿郁3">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁3
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁4.jpg" alt="阿郁4">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁4
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁5.jpg" alt="阿郁5">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁5
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁6.jpg" alt="阿郁6">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁6
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="阿郁7.jpg" alt="阿郁7">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                阿郁7
+            </div>
+        </div>
+    </div>
+    <div id="emoji" class="gallery">
+        <div class="gallery-item">
+            <img src="南酱.1.jpg" alt="表情包 1">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                南酱1
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="南酱.2.jpg" alt="表情包 2">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                南酱2
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="南酱.3.jpg" alt="表情包 3">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                南酱3
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="南酱.4.jpg" alt="表情包 4">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0, 0, 0, 0.6); padding: 5px; border-radius: 5px;">
+                南酱4
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 意识流动漫社. 保留所有权利.</p>
+    </footer>
+    <script>
+        function showGallery(id) {
+            // 隐藏所有 gallery
+            const galleries = document.querySelectorAll('.gallery');
+            galleries.forEach(gallery => gallery.classList.remove('active'));
+
+            // 显示对应的 gallery
+            const targetGallery = document.getElementById(id);
+            if (targetGallery) {
+                targetGallery.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        /* 上部背景板区域 */
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            width: 100%;
+        }
+        /* 下半部分布局 */
+        .main {
+            display: flex; /* 使用 flex 布局 */
+            flex-direction: row; /* 水平排列 */
+            margin: 2rem auto;
+            max-width: 1200px; /* 设置最大宽度 */
+        }
+        /* 表格区域 */
+        .sidebar {
+            width: 200px; /* 固定宽度 */
+            margin-right: 2rem; /* 与内容区域的间距 */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%; /* 表格宽度占满 sidebar */
+            border: 2px solid #007BFF; /* 添加蓝色外边框 */
+            background: #f9f9f9; /* 表格背景颜色 */
+        }
+        table td {
+            border: 1px solid #007BFF; /* 单元格边框颜色 */
+            padding: 1rem;
+            text-align: center;
+        }
+        table td a {
+            text-decoration: none;
+            color: #333;
+            cursor: pointer; /* 鼠标变为手型 */
+        }
+        table td a:hover {
+            color: #007BFF; /* 鼠标悬停时改变颜色 */
+        }
+        /* 内容区域 */
+        .content {
+            flex: 1; /* 内容区域占据剩余空间 */
+            background: #f9f9f9; /* 内容区域背景颜色 */
+            padding: 2rem;
+            border-radius: 10px; /* 添加圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 上部背景板 -->
+    <header>
+        <h1>活动</h1>
+    </header>
+    <!-- 下半部分 -->
+    <div class="main">
+        <!-- 表格区域 -->
+        <div class="sidebar">
+            <table>
+                <tr>
+                    <td><a onclick="showContent('exhibition')">漫展</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="showContent('concert')">歌会</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="showContent('recruitment')">招新</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="showContent('diplomacy')">外交</a></td>
+                </tr>
+                <tr>
+                    <td><a onclick="showContent('daily')">日常</a></td>
+                </tr>
+            </table>
+        </div>
+        <!-- 内容区域 -->
+        <div class="content" id="content">
+            <h2>漫展</h2>
+            <div>
+                <div style="margin-top: 2rem;">
+                    <h3>2025.03.08 花开</h3>
+                    <img src="2025.03.08花开合照.jpg" alt="2025.03.08 花开" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                    
+                </div>
+                <h3>25元旦萌卡</h3>
+                <img src="25萌卡合照.jpg" alt="25萌卡" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                
+            </div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <footer>
+        <p style="text-align: center; font-style: italic;">&copy; 2025 意识流动漫社. 保留所有权利.</p>
+    </footer>
+    <script>
+        // 定义内容数据
+        const contentData = {
+            exhibition: `
+                <div style="margin-top: 2rem;">
+                    <h3>2025.03.08 花开</h3>
+                    <img src="2025.03.08花开合照.jpg" alt="2025.03.08 花开" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                </div>
+            `,
+            concert: `
+                <h2>2025.03.15 歌会</h2>
+                <img src="2025.03.15歌会.jpg" alt="2025.03.15 歌会" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                
+            `,
+            recruitment: `
+                <h2>招新</h2>
+                <p>招新活动是意识流动漫社每年的重要环节，旨在吸引更多热爱动漫的同学加入社团。</p>
+                <p>活动内容包括：</p>
+                <ul>
+                    <li>社团介绍：展示社团的历史和活动。</li>
+                    <li>互动问答：解答新成员的疑问。</li>
+                    <li>报名环节：填写报名表并加入社团。</li>
+                </ul>
+                <p>通过招新活动，社团注入了新鲜血液，增强了社团的活力。</p>
+                <div style="margin-top: 2rem;">
+                    <h3>24届百团招新</h3>
+                    <img src="这是24届百团招新.jpg" alt="24届百团招新" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                   
+                </div>
+                <div style="margin-top: 2rem;">
+                    <h3>2024.10.15 西苑食堂招新</h3>
+                    <img src="2024.10.15西苑食堂招新.jpg" alt="2024.10.15 西苑食堂招新" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                 
+                </div>
+                <div style="margin-top: 2rem;">
+                    <h3>2024.10.14 下班招新</h3>
+                    <img src="2024.10.14下班招新.jpg" alt="2024.10.14 下班招新" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+        
+                </div>
+            `,
+            diplomacy: `
+                <h2>外交</h2>
+                <p>外交活动是意识流动漫社与其他社团或组织合作的重要方式。</p>
+                <p>活动内容包括：</p>
+                <ul>
+                    <li>联合活动：与其他社团共同举办动漫相关活动。</li>
+                    <li>资源共享：共享活动场地、设备等资源。</li>
+                    <li>经验交流：与其他社团分享管理和活动经验。</li>
+                </ul>
+                <p>通过外交活动，社团扩大了影响力，增强了与外界的联系。</p>
+                <div style="margin-top: 2rem;">
+                    <h3>2025.05.01我在萌卡cfa摊位当黑工</h3>
+                    <img src="重生我在2025.05.01萌卡的cfa摊位当黑工.jpg" alt="外交活动合影" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                </div>
+            `,
+            daily: `
+                <h2>24届新生大会</h2>
+                <img src="24届新生大会.jpg" alt="24届新生大会" style="width:100%; max-width:600px; border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);">
+                <p>通过新生大会，新成员不仅了解了社团，还结识了志同道合的朋友，为未来的社团生活奠定了基础。</p>
+            `
+        };
+
+        // 显示内容函数
+        function showContent(type) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = contentData[type];
+        }
+    </script>
+</body>
+</html>
